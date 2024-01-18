@@ -51,7 +51,3 @@ export function parseTeamsJson(input) {
 
   return games;
 }
-
-// Use the function in your main processing file
-// const gamesData = parseJson(fileContents);
-
