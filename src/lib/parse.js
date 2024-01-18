@@ -25,16 +25,26 @@ export function parseTeamsJson(input) {
   }
 
   if (!parsed.games || !Array.isArray(parsed.games)) {
-    console.error('Expected games to be an array');
+    console.error('expected games to be an array');
     return [];
   }
 
   const games = [];
   for (const game of parsed.games) {
-    // Perform additional validation if necessary
     if (!game.home || !game.away) {
       console.warn('missing required properties in game data');
-    } else {
+      continue;
+    }
+    // validaetum heitin og skorið
+    const nameRegex = /^[A-Za-zÁÐÉÍÓÚÝÞÆÖáðéíóúýþæö ]+$/;
+    const scoreRegex = /^[0-9]+$/;
+
+    const isHomeNameValid = nameRegex.test(game.home.name);
+    const isAwayNameValid = nameRegex.test(game.away.name);
+    const isHomeScoreValid = scoreRegex.test(game.home.score.toString());
+    const isAwayScoreValid = scoreRegex.test(game.away.score.toString());
+
+    if (isHomeNameValid && isAwayNameValid && isHomeScoreValid && isAwayScoreValid) {
       games.push({
         date: parsed.date,
         home: {

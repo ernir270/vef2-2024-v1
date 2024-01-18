@@ -11,41 +11,47 @@ export function template(title, content) {
   <head>
     <meta charset="utf-8">
     <title>${title}</title>
-    <link rel="stylesheet" href="./public/styles.css">
-    <script type="module" src="./public/scripts.js"></script>
+    <link rel="stylesheet" href="../public/styles.css">
+    <script type="module" src="../public/scripts.js"></script>
   </head>
   <body>${content}</body>
 </html>`;
 }
 
 export function gameTemplate(game){
-
+  return `<tr>
+      <td>${game.date ?? ''}</td>
+      <td>${game.home.name ?? ''}</td>
+      <td>${game.home.score ?? ''}</td>
+      <td>${game.away.name ?? ''}</td>
+      <td>${game.away.score ?? ''}</td>
+    </tr>`;
 }
 
 
 /**
- * Generate a HTML string representing a team.
+ * Generate a HTML string representing recent games.
  *
- * @param {string} title title of the department
- * @param {string} description description of the department
  * @param {Array<Games>} games list of courses
- * @returns {string} HTML string representing the department
+ * @returns {string} HTML string representing recent games.
  */
 export function recentGamesTemplate(games) {
   const allGames = `
     <div class="games">
-      <h2>Stöðutafla</h2>
+      <h2>Nýjustu leikir</h2>
       <div class="table">
         <table>
           <thead>
             <tr>
+              <th>Dagsetning</th>
               <th>Lið</th>
-              <th>Stig</th>
+              <th>Mörk</th>
+              <th>Lið</th>
+              <th>Mörk</th>
             </tr>
           </thead>
           <tbody>
             ${games.map(gameTemplate).join('')}
-              <!-- hér koma leikirnir -->
           </tbody>
         </table>
       </div>
@@ -53,5 +59,20 @@ export function recentGamesTemplate(games) {
     </div>
   `;
 
+  return template('Nýjustu leikir', allGames);
+}
+
+
+/**
+ * Generate a HTML string representing the standings.
+ *
+ * @param {Array<Games>} games list of courses
+ * @returns {string} HTML string representing the standings.
+
+export function standingsTemplate(games) {
+
+  // todo
+
   return template('Stöðutafla', allGames);
 }
+*/

@@ -8,7 +8,6 @@ const INPUT_DIR = './data';
 const OUTPUT_DIR = './dist';
 
 async function main() {
-
   await createDirIfNotExists(OUTPUT_DIR);
 
   const files = await readFilesFromDir(INPUT_DIR);
