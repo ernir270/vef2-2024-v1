@@ -18,6 +18,37 @@ export function template(title, content) {
 </html>`;
 }
 
+
+/**
+ * @returns index.html page
+ */
+
+export function indexTemplate(){
+  const content = `
+    <!doctype html>
+    <html lang="is">
+      <head>
+        <meta charset="utf-8">
+        <title>Stöðutafla</title>
+        <link rel="stylesheet" href="./public/styles.css">
+        <script type="module" src="./public/scripts.js"></script>
+      </head>
+      <body>
+        <p><a href="./leikir.html">Yfirlit yfir leiki</a></p>
+        <p><a href="./stada.html">Stöðutafla</a></p>
+      </body>
+    </html>
+  `;
+
+  return content;
+}
+
+
+/**
+ * @param {game} game
+ * @returns
+ */
+
 export function gameTemplate(game){
   return `<tr>
       <td>${game.date ?? ''}</td>
@@ -29,10 +60,18 @@ export function gameTemplate(game){
 }
 
 
+export function teamTemplate(team){
+  return `<tr>
+      <td>${team.name ?? ''}</td>
+      <td>${team.score ?? ''}</td>
+    </tr>`;
+}
+
+
 /**
  * Generate a HTML string representing recent games.
  *
- * @param {Array<Games>} games list of courses
+ * @param {Array<Games>} games list of games
  * @returns {string} HTML string representing recent games.
  */
 export function recentGamesTemplate(games) {
@@ -66,13 +105,29 @@ export function recentGamesTemplate(games) {
 /**
  * Generate a HTML string representing the standings.
  *
- * @param {Array<Games>} games list of courses
+ * @param teams list of teams and they´re points
  * @returns {string} HTML string representing the standings.
-
-export function standingsTemplate(games) {
-
-  // todo
-
-  return template('Stöðutafla', allGames);
-}
 */
+export function standingsTemplate(teams) {
+  const standings = `
+    <div class="standings">
+      <h2>Stöðutafla</h2>
+      <div class="table">
+        <table>
+          <thead>
+            <tr>
+              <th>Lið</th>
+              <th>Stig</th>
+            </tr>
+          </thead>
+          <tbody>
+            ${teams.map(teamTemplate).join('')}
+          </tbody>
+        </table>
+      </div>
+      <p><a href="./index.html">Til baka</a></p>
+    </div>
+  `;
+
+  return template('Stöðutafla', standings);
+}

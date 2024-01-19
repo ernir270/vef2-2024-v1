@@ -1,3 +1,5 @@
+// tók fall úr sýnilausn á v1 2023 og breytti
+
 function sortTable(table, target) {
   const header = table.querySelector('thead tr');
   const rows = Array.from(table.querySelectorAll('tbody tr'));

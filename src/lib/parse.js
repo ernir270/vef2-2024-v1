@@ -25,7 +25,6 @@ export function parseTeamsJson(input) {
   }
 
   if (!parsed.games || !Array.isArray(parsed.games)) {
-    console.error('expected games to be an array');
     return [];
   }
 

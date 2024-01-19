@@ -45,6 +45,4 @@ async function test(directoryPath) {
 }
 
 
-test('../../data');
-
-
+test('../../data')
