@@ -1,3 +1,4 @@
+
 /**
  * Game data.
  * @typedef {object} Game
@@ -9,6 +10,8 @@
  * @property {string} away.name - Name of the away team
  * @property {number} away.score - Score of the away team
  */
+
+
 
 /**
  * Parse JSON data representing game data.
@@ -34,6 +37,7 @@ export function parseTeamsJson(input) {
       console.warn('missing required properties in game data');
       continue;
     }
+
     // validaetum heitin og skorið
     const nameRegex = /^[A-Za-zÁÐÉÍÓÚÝÞÆÖáðéíóúýþæö ]+$/;
     const scoreRegex = /^[0-9]+$/;
@@ -43,19 +47,19 @@ export function parseTeamsJson(input) {
     const isHomeScoreValid = scoreRegex.test(game.home.score.toString());
     const isAwayScoreValid = scoreRegex.test(game.away.score.toString());
 
-    if (isHomeNameValid && isAwayNameValid && isHomeScoreValid && isAwayScoreValid) {
-      games.push({
-        date: parsed.date,
-        home: {
-          name: game.home.name,
-          score: game.home.score,
-        },
-        away: {
-          name: game.away.name,
-          score: game.away.score,
-        },
-      });
-    }
+      if (isHomeNameValid && isAwayNameValid && isHomeScoreValid && isAwayScoreValid) {
+        games.push({
+          date: parsed.date,
+          home: {
+            name: game.home.name,
+            score: game.home.score,
+          },
+          away: {
+            name: game.away.name,
+            score: game.away.score,
+          },
+        });
+      }
   }
 
   return games;

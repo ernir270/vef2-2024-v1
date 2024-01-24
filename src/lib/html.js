@@ -29,7 +29,7 @@ export function indexTemplate(){
     <html lang="is">
       <head>
         <meta charset="utf-8">
-        <title>Stöðutafla</title>
+        <title>Boltadeildin!</title>
         <link rel="stylesheet" href="./public/styles.css">
         <script type="module" src="./public/scripts.js"></script>
       </head>
