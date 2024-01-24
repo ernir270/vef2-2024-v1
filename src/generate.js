@@ -1,4 +1,4 @@
-import { promises as fsPromises } from 'fs';
+import { writeFile } from 'fs/promises';
 import {
   createDirIfNotExists,
   readFile,
@@ -17,7 +17,7 @@ async function main() {
   const content = indexTemplate();
 
   try {
-    await fsPromises.writeFile(`${OUTPUT_DIR}/index.html`, content);
+    await writeFile(`${OUTPUT_DIR}/index.html`, content);
   } catch (e) {
     console.error('error generating index.html', e);
   }
@@ -47,12 +47,12 @@ async function main() {
 
     if (allGames.length > 0) {
       try {
-        await fsPromises.writeFile(`${OUTPUT_DIR}/leikir.html`, recentGamesTemplate(allGames));
+        await writeFile(`${OUTPUT_DIR}/leikir.html`, recentGamesTemplate(allGames));
 
         // smá gpt hjálp hér
         const standingsObject = await calculateStandings(allGames);
         const standingsArray=Object.entries(standingsObject).map(([name, score])=>({name, score }));
-        await fsPromises.writeFile(`${OUTPUT_DIR}/stada.html`, standingsTemplate(standingsArray));
+        await writeFile(`${OUTPUT_DIR}/stada.html`, standingsTemplate(standingsArray));
 
       } catch (e) {
       console.error(e);

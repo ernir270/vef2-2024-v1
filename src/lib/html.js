@@ -20,11 +20,13 @@ export function template(title, content) {
 
 
 /**
+ * Generates HTML content for the index.html page
+ *
  * @returns index.html page
  */
 
 export function indexTemplate(){
-  const content = `
+  return `
     <!doctype html>
     <html lang="is">
       <head>
@@ -39,14 +41,14 @@ export function indexTemplate(){
       </body>
     </html>
   `;
-
-  return content;
 }
 
 
 /**
+ * Generates HTML content to be used in recent games table
+ *
  * @param {game} game
- * @returns
+ * @returns template of a game to be used in recent games table
  */
 
 export function gameTemplate(game){
@@ -59,6 +61,12 @@ export function gameTemplate(game){
     </tr>`;
 }
 
+/**
+ * Generates a HTML content to be used in standings table
+ *
+ * @param team
+ * @returns template of team to be used in standings table
+ */
 
 export function teamTemplate(team){
   return `<tr>
