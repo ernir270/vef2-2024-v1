@@ -1,10 +1,12 @@
 import { describe, expect, it } from '@jest/globals';
 import { direxists, readFile, readFilesFromDir } from './file';
 
+
 // Hér ættum við að nota mock, en þau eru erfið með Jest + ESM
 // https://jestjs.io/docs/ecmascript-modules#module-mocking-in-esm
 
 /** Directory that contains test data, relative to the project root. */
+
 const testDir = './src/test/data';
 
 describe('file', () => {

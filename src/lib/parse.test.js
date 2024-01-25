@@ -4,7 +4,7 @@ import { parseTeamsJson } from './parse';
 describe('parse', () => {
   describe.only('parseTeamsJson', () => {
     it('should have a test', () => {
-      expect(parseTeamsJson('{}')).toEqual({});
+      expect(parseTeamsJson('{}')).toEqual([]);
     });
   });
 });

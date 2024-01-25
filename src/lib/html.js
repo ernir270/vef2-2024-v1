@@ -7,15 +7,15 @@
  */
 export function template(title, content) {
   return `<!doctype html>
-<html lang="is">
-  <head>
-    <meta charset="utf-8">
-    <title>${title}</title>
-    <link rel="stylesheet" href="../public/styles.css">
-    <script type="module" src="../public/scripts.js"></script>
-  </head>
-  <body>${content}</body>
-</html>`;
+          <html lang="is">
+          <head>
+          <meta charset="utf-8">
+          <title>${title}</title>
+          <link rel="stylesheet" href="../public/styles.css">
+          <script type="module" src="../public/scripts.js"></script>
+          </head>
+          <body>${content}</body>
+          </html>`;
 }
 
 
@@ -53,12 +53,12 @@ export function indexTemplate(){
 
 export function gameTemplate(game){
   return `<tr>
-      <td>${game.date ?? ''}</td>
-      <td>${game.home.name ?? ''}</td>
-      <td>${game.home.score ?? ''}</td>
-      <td>${game.away.name ?? ''}</td>
-      <td>${game.away.score ?? ''}</td>
-    </tr>`;
+          <td>${game.date ?? ''}</td>
+          <td>${game.home.name ?? ''}</td>
+          <td>${game.home.score ?? ''}</td>
+          <td>${game.away.name ?? ''}</td>
+          <td>${game.away.score ?? ''}</td>
+          </tr>`;
 }
 
 /**
@@ -70,9 +70,9 @@ export function gameTemplate(game){
 
 export function teamTemplate(team){
   return `<tr>
-      <td>${team.name ?? ''}</td>
-      <td>${team.score ?? ''}</td>
-    </tr>`;
+         <td>${team.name ?? ''}</td>
+         <td>${team.score ?? ''}</td>
+         </tr>`;
 }
 
 

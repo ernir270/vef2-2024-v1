@@ -1,3 +1,11 @@
+/**
+ * Calculates points for each team
+ *
+ * @param games array of games
+ * @returns returns a dictionary of team names and they´re points
+ * to be inserted into the standings table
+ */
+
 export async function calculateStandings(games) {
   const standings = {};
   try {
