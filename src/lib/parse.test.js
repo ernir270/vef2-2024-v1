@@ -4,7 +4,7 @@ import { parseTeamsJson } from './parse';
 
 describe('parse', () => {
   describe.only('parseTeamsJson', () => {
-    it('should have a test', async () => {
+    it('should return the correct format of data after parsing', async () => {
 
       const fileContents = await readFile('./data/gameday-xj39.json');
       const jsonData = JSON.parse(fileContents);
