@@ -11,8 +11,8 @@ export function template(title, content) {
           <head>
           <meta charset="utf-8">
           <title>${title}</title>
-          <link rel="stylesheet" href="./public/styles.css">
-          <script type="module" src="./public/scripts.js"></script>
+          <link rel="stylesheet" href="/public/styles.css">
+          <script type="module" src="/public/scripts.js"></script>
           </head>
           <body>${content}</body>
           </html>`;
