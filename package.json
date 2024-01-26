@@ -6,12 +6,12 @@
   "author": "",
   "license": "ISC",
   "type": "module",
-  "main": "index.js",
+  "main": "src/generate.js",
   "engines": {
     "node": "20"
   },
   "scripts": {
-    "build": "node ./src/generate.js && copy public dist",
+    "build": "node src/generate.js",
     "test": "cross-env NODE_OPTIONS='--experimental-vm-modules' NODE_NO_WARNINGS=1 jest ./*.test.js",
     "test:coverage": "cross-env NODE_OPTIONS='--experimental-vm-modules' NODE_NO_WARNINGS=1 jest ./*.test.js --coverage",
     "lint": "concurrently npm:lint:*",
