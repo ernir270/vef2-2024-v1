@@ -1,4 +1,5 @@
 import { writeFile } from 'fs/promises';
+import { join } from 'path';
 import {
   createDirIfNotExists,
   readFile,
@@ -8,19 +9,15 @@ import { indexTemplate, recentGamesTemplate, standingsTemplate } from './lib/htm
 import { parseTeamsJson } from './lib/parse.js';
 import { calculateStandings } from './lib/score.js';
 
-const INPUT_DIR = '../data';
-const OUTPUT_DIR = '../dist';
+const INPUT_DIR = './data';
+const OUTPUT_DIR = './dist';
 
 async function main() {
   await createDirIfNotExists(OUTPUT_DIR);
 
   const content = indexTemplate();
-
-  try {
-    await writeFile(`${OUTPUT_DIR}/index.html`, content);
-  } catch (e) {
-    console.error('error generating index.html', e);
-  }
+  const indexFilename = join(OUTPUT_DIR, 'index.html');
+  await writeFile(indexFilename, content);
 
   const files = await readFilesFromDir(INPUT_DIR);
   let allGames = [];
@@ -31,7 +28,7 @@ async function main() {
     }
 
     try {
-      const fileContents = await readFile(`${INPUT_DIR}/${file}`);
+      const fileContents = await readFile(file);
       const jsonData = JSON.parse(fileContents);
       if (jsonData && jsonData.games) {
         const games = parseTeamsJson(JSON.stringify(jsonData));
@@ -47,12 +44,17 @@ async function main() {
 
     if (allGames.length > 0) {
       try {
-        await writeFile(`${OUTPUT_DIR}/leikir.html`, recentGamesTemplate(allGames));
+
+        const recentGames = recentGamesTemplate(allGames);
+        const recentGamesFilename = join(OUTPUT_DIR, 'stada.html')
+        await writeFile(recentGamesFilename, recentGames);
 
         // smá gpt hjálp hér
         const standingsObject = await calculateStandings(allGames);
         const standingsArray=Object.entries(standingsObject).map(([name, score])=>({name, score }));
-        await writeFile(`${OUTPUT_DIR}/stada.html`, standingsTemplate(standingsArray));
+        const standings = standingsTemplate(standingsArray);
+        const standingsFilename = join(OUTPUT_DIR, 'leikir.html');
+        await writeFile(standingsFilename, standings);
 
       } catch (e) {
       console.error(e);
