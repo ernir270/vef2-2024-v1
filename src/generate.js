@@ -46,14 +46,14 @@ async function main() {
       try {
 
         const recentGames = recentGamesTemplate(allGames);
-        const recentGamesFilename = join(OUTPUT_DIR, 'stada.html')
+        const recentGamesFilename = join(OUTPUT_DIR, 'leikir.html')
         await writeFile(recentGamesFilename, recentGames);
 
         // smá gpt hjálp hér
         const standingsObject = await calculateStandings(allGames);
         const standingsArray=Object.entries(standingsObject).map(([name, score])=>({name, score }));
         const standings = standingsTemplate(standingsArray);
-        const standingsFilename = join(OUTPUT_DIR, 'leikir.html');
+        const standingsFilename = join(OUTPUT_DIR, 'stada.html');
         await writeFile(standingsFilename, standings);
 
       } catch (e) {
