@@ -31,6 +31,19 @@ export function parseTeamsJson(input) {
     return [];
   }
 
+  const validTeams = ['Boltaliðið',
+    'Dripplararnir',
+    'Skotföstu kempurnar',
+    'Markaskorarnir',
+    'Sigurliðið',
+    'Risaeðlurnar',
+    'Framherjarnir',
+    'Fljótu fæturnir',
+    'Vinningshópurinn',
+    'Ósigrandi skotfólkið',
+    'Óhemjurnar',
+    'Hraðaliðið']
+
   const games = [];
   for (const game of parsed.games) {
     if (!game.home || !game.away) {
@@ -47,6 +60,7 @@ export function parseTeamsJson(input) {
     const isHomeScoreValid = scoreRegex.test(game.home.score.toString());
     const isAwayScoreValid = scoreRegex.test(game.away.score.toString());
 
+    if (validTeams.includes(game.home.name) && validTeams.includes(game.away.name)) {
       if (isHomeNameValid && isAwayNameValid && isHomeScoreValid && isAwayScoreValid) {
         games.push({
           date: parsed.date,
@@ -60,6 +74,7 @@ export function parseTeamsJson(input) {
           },
         });
       }
+    }
   }
 
   return games;
