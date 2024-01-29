@@ -1,4 +1,3 @@
-
 /**
  * Game data.
  * @typedef {object} Game
