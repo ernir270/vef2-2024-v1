@@ -36,8 +36,11 @@ export function indexTemplate(){
         <script type="module" src="./public/scripts.js"></script>
       </head>
       <body>
-        <p><a href="./leikir.html">Yfirlit yfir leiki</a></p>
-        <p><a href="./stada.html">Stöðutafla</a></p>
+        <h2>Velkomin á heimasíðu Boltadeildarinnar!</h2>
+        <div class="link_container">
+          <p><a href="./leikir.html">Yfirlit yfir leiki</a></p>
+          <p><a href="./stada.html">Stöðutafla</a></p>
+        </div>
       </body>
     </html>
   `;

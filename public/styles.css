@@ -29,3 +29,6 @@ table td, th {
   text-align: start;
 }
 
+.link_container, h2 {
+  text-align: center;
+}
